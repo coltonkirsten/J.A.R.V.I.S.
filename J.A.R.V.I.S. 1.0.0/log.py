@@ -18,7 +18,7 @@ def archive_log():
     now = datetime.datetime.now().date()
     shutil.copy('logs/log.txt', f'archived_logs/LOG: {now}.txt')
 
-if __name__ == "__main__":
+def start():
     os.makedirs('logs', exist_ok=True)
     os.makedirs('archived_logs', exist_ok=True)
 
