@@ -15,7 +15,7 @@ def clean_log():
         pass
 
 def archive_log():
-    now = datetime.datetime.now().date()
+    now = datetime.datetime.now()
     shutil.copy('logs/log.txt', f'archived_logs/LOG: {now}.txt')
 
 def start():
