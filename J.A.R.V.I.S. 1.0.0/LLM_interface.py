@@ -4,8 +4,9 @@
 import os
 import openai
 import log
+import api_key
 
-openai.api_key = "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"
+openai.api_key = api_key.key
 
 def prompt_LLM(prompt,primer="",start="\nAI:",restart="\nUSER:",temp=0.5,max_tok =200,LLM="text-davinci-003"):
     if prompt == None:
