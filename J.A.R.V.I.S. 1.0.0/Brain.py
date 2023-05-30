@@ -53,6 +53,14 @@ class cortex():
         command_interface.execute_command(command)
             
 
-    def interpret_request():
-        None
-    
+    def interpret_request(self, prompt):
+        rqst_interpreter =  LLM_interface.chat_LLM(system_message="You are an AI that detects a user's request for information, and selects the appropriate keyword to retrieve that information. These are available keywords. if the users statement implies they would like a certain peice of information, choose the appropriate keyword:\n\Keywords\nTIME - retrieves the current time\nWEATHER - retrieves the current weather\nGOOGLE ‘user prompt’ - if the user request cannot be answered by other commands, use this keyword to initiate a google search.")
+        primers = {
+        "What time is it?": "TIME",
+        "Whats the weather?": "WEATHER",
+        "whats the latest news on congress?": "GOOGLE 'whats the latest news on congress'"
+        }
+        rqst_interpreter.load_primers(primers)
+        request = rqst_interpreter.prompt(prompt)
+        info_interface.respond_with_info(request)
+
